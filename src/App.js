@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React, { useState } from "react";
+import data from "./data";
+import List from "./List";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+const App = () => {
+  const [person, setPerson] = useState(data);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <section className="container">
+        <h3>Birthday Remainder</h3>
+        <CardMedia
+          sx={{ height: 300 }}
+          image="https://source.unsplash.com/random/400x200/?person"
+          title="Birthday Person"
+        />{" "}
+        <br />
+        <List person={person} />
+        <Stack spacing={2} direction="row">
+          <Button onClick={() => setPerson([])} variant="contained">
+            Clear All
+          </Button>
+        </Stack>
+      </section>
     </div>
   );
-}
-
+};
 export default App;
